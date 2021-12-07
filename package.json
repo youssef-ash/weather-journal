@@ -1,0 +1,17 @@
+{
+  "name": "weather-journal-app",
+  "version": "1.0.0",
+  "description": "This is a local web application that fetches the weather of the location of the zip code that is entered by the user, and that captures what a user inputs in the \"feelings\" section and displays it in the \"result\" section using asynchronous JavaScript.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Youssef youssefashwal@outlook.com",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
