@@ -1,0 +1,44 @@
+<!DOCTYPE>
+<html lang="en">
+    <head>
+        <title>Weather Journal App</title>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <h1> Weather Journal App</h1>
+        </header>
+
+        <main>
+            <div id="zip-holder">
+                <input id="zip" type="text" placeholder="Enter zip code here">
+            </div>     
+            <div id="error-holder">
+                <div id="error">Invalid Zip Code!</div>
+            </div>
+            <div id="feelings-holder">
+                <textarea id="feelings" placeholder="How are you feeling today?" rows="6" cols="55"></textarea>
+            </div>
+            <div id="button-holder">
+                <button id="generate" type = "submit"> Generate </button>
+            </div>
+            <div id="result-container">
+                <div id="result">
+                    <label for="date">Date: </label>
+                    <div id="date"></div>
+                    <label for="location">Location: </label>
+                    <div id="location"></div>
+                    <label for="temperature">Temperature: </label>
+                    <div id="temperature"></div>
+                    <label for="feelings-value">Feelings: </label>
+                    <div id="feelings-value"></div>
+                </div>
+            </div>
+        </main>
+    <script src="app.js"></script>
+    </body>
+</html>

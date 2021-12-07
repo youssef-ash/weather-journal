@@ -1,0 +1,128 @@
+body {
+    background-image: url("bg1.jpg.webp");
+    background-size: 100% 100%;
+    margin: 0;
+}
+
+main {
+    padding: 15px;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    font-size: 2.1em;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.253);
+    color: white;
+    text-shadow:
+        -1px -1px 0 black,
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    padding: 15px 10px;
+    margin: 0;
+}
+
+#zip-holder {
+    top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 10px 0;
+}
+
+input {
+    width: 300px;
+    height: 30px;
+    border-radius: 100px;
+    padding: 20px;
+    border: none;
+
+}
+
+#error-holder {
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+#error {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 0.85em;
+    background-color: #F8D7DA;
+    color: #721C24;
+    border-color: #721C24;
+    border-style: ridge;
+    border-width: 2px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px 25px;
+    margin-bottom: 10px;
+}
+
+#feelings-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 25px;
+    padding: 15px;
+    border: none;
+    resize: none;
+}
+
+#button-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#generate {
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    border-style: groove;
+}
+
+#generate:hover {
+    cursor: pointer;
+    background-color: rgb(190, 190, 190);
+}
+
+#result-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#result {
+    background-color: rgba(0, 0, 0, 0.253);
+    width: 500px;
+    height:fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    border-style: ridge;
+    border-color: rgb(255, 197, 250);
+    padding: 5px 100px;
+    line-height: 30px;
+    margin-bottom: 10px;
+}
+
+label {
+    font-size: 0.9em;
+}
+
+#result div {
+    height: 33px;
+    font-size: 1.5em;
+}
