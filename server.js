@@ -6,7 +6,7 @@ projectData = {};
 
 const app = express();
 
-app.use(express.static("src/website"));
+app.use(express.static("website"));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
