@@ -1,6 +1,5 @@
 const baseURL ="https://api.openweathermap.org/data/2.5/weather?zip=";
 const apiKey = ",&appid=430cb5193385a4049e6e8308a71eae59&units=metric";
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 
@@ -58,12 +57,12 @@ async function updateUI() {
 function generate() {
     const zipCode = document.getElementById("zip").value;
     const feelings = document.getElementById("feelings").value;
-    const d = new Date
-    const newDate = days[d.getDay()] + ", " + months[d.getMonth()] + ", " + d.getFullYear()
+    const date = new Date
+    const dateDisplay = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
 
-    getWeather(baseURL + zipCode + apiKey).then(function(weather) {
+    getWeather(baseURL + zipCode + apiKey).then((weather) => {
         let info = {
-            date: newDate,
+            date: dateDisplay,
             location: weather.name,
             temperature: weather.main.temp,
             feelings: feelings
@@ -71,4 +70,5 @@ function generate() {
         postData("/addData", info);
     }).then(() => updateUI())
 };
+
 document.getElementById("generate").addEventListener("click", generate);
