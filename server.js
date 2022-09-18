@@ -1,25 +1,25 @@
-const express = require("express");
-const cors = require("cors");
-const bodyParser = require("body-parser")
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser')
 
 projectData = {};
 
 const app = express();
 
-app.use(express.static("website"));
+app.use(express.static('website'));
 app.use(cors());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // GET route.
-app.get("/all", getData);
+app.get('/all', getData);
 
 function getData(req, res) {
     res.send(projectData);
 };
 
 // POST route.
-app.post("/addData", addData);
+app.post('/addData', addData);
 
 function addData(req, res) {
     projectData = {
