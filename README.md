@@ -12,6 +12,8 @@ To start using the app, you can start up the server by running `npm run start` t
 
 ## **Mock-Ups**
 
-![](/mock-ups/weather_journal_mock-up.png)
+![](/mock-ups/light_mock-up_1.png)
 
-![](/mock-ups/weather_journal_test.png)
+![](/mock-ups/light_mock-up_2.png)
+
+![](/mock-ups/dark_mock-up_1.png)
