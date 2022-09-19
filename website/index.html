@@ -10,23 +10,28 @@
         <link href='css/style.css' rel='stylesheet'>
     </head>
     <body>
-        <header>
+        <header id='header'>
             <h1>Weather Journal App</h1>
+            <button id='dark__mode'>
+                <span class='material-symbols-outlined icon'>
+                    dark_mode
+                </span>
+            </button>
         </header>
         <main>
-            <div id='zip-holder'>
-                <input id='zip' type='text' placeholder='Enter zip code here'>
+            <div id='zip__holder'>
+                <input id='zip__input' type='text' placeholder='Enter zip code here'>
             </div>     
-            <div id='error-holder'>
+            <div id='error__holder'>
                 <div id='error'>Invalid Zip Code!</div>
             </div>
-            <div id='feelings-holder'>
-                <textarea id='feelings' placeholder='How are you feeling today?' rows='6' cols='55'></textarea>
+            <div id='feelings__holder'>
+                <textarea id='feelings__input' placeholder='How are you feeling today?' rows='6' cols='55'></textarea>
             </div>
-            <div id='button-holder'>
-                <button id='generate' type = 'submit'>Generate</button>
+            <div id='button__holder'>
+                <button id='generate' type ='submit'>Generate</button>
             </div>
-            <div id='result-container'>
+            <div id='result__container'>
                 <div id='result'>
                     <label for='date'>Date:</label>
                     <div id='date'></div>
@@ -34,8 +39,8 @@
                     <div id='location'></div>
                     <label for='temperature'>Temperature:</label>
                     <div id='temperature'></div>
-                    <label for='feelings-value'>Feelings:</label>
-                    <div id='feelings-value'></div>
+                    <label for='feelings__value'>Feelings:</label>
+                    <div id='feelings__value'></div>
                 </div>
             </div>
         </main>
