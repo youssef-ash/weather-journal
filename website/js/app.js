@@ -3,14 +3,18 @@
 const baseURL ='https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = ',&appid=430cb5193385a4049e6e8308a71eae59&units=metric';
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 const header = document.getElementById('header');
 const body = document.body;
-const darkModeButton = document.getElementById('dark__mode');
+
 const zipInput = document.getElementById('zip__input');
 const feelingsInput = document.getElementById('feelings__input');
+
+const darkModeButton = document.getElementById('dark__mode__button');
 const generateButton = document.getElementById('generate');
+
 const resultSection = document.getElementById('result');
-const error = document.getElementById('error__holder');
+const errorSection = document.getElementById('error__holder');
 
 // Main Functions
 
@@ -20,10 +24,10 @@ async function getWeather(url = '') {
     try {
         const weather = await res.json();
         if (weather.cod != 200) {
-            error.style.display = 'flex';
+            errorSection.style.display = 'flex';
             return
         } else {
-            error.style.display = 'none';
+            errorSection.style.display = 'none';
         return weather;
         }
     } catch(error) {
