@@ -1,11 +1,12 @@
-// Global Variables
+/* Global Variables */
 
 const baseURL ='https://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = ',&appid=430cb5193385a4049e6e8308a71eae59&units=metric';
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-const header = document.getElementById('header');
-const body = document.body;
+let prefersDark = localStorage.getItem('darkMode');
+
+const html = document.documentElement;
 
 const zipInput = document.getElementById('zip__input');
 const feelingsInput = document.getElementById('feelings__input');
@@ -13,14 +14,13 @@ const feelingsInput = document.getElementById('feelings__input');
 const darkModeButton = document.getElementById('dark__mode__button');
 const generateButton = document.getElementById('generate');
 
-const resultSection = document.getElementById('result');
 const errorSection = document.getElementById('error__holder');
 
-// Main Functions
+/* Main Functions */
 
 // fetches weather from API
 async function getWeather(url = '') {
-    const res = await fetch(url)
+    const res = await fetch(url);
     try {
         const weather = await res.json();
         if (weather.cod != 200) {
@@ -44,7 +44,7 @@ async function postData(url = '', data = {}) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-    })
+    });
     try {
         const newData = await res.json();
         return newData;
@@ -55,7 +55,7 @@ async function postData(url = '', data = {}) {
 
 // updates the user interface using the object received from the server
 async function updateUI() {
-    const req = await fetch('/all')
+    const req = await fetch('/all');
     try {
         const data = await req.json()
         document.getElementById('date').innerHTML = data.date;
@@ -71,8 +71,8 @@ async function updateUI() {
 function generate() {
     const zipCode = zipInput.value;
     const feelings = feelingsInput.value;
-    const date = new Date
-    const dateDisplay = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`
+    const date = new Date;
+    const dateDisplay = `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
 
     getWeather(baseURL + zipCode + apiKey).then((weather) => {
         let info = {
@@ -82,25 +82,49 @@ function generate() {
             feelings: feelings
         }
         postData('/addData', info);
-    }).then(() => updateUI())
+    }).then(() => updateUI());
 };
 
-// toggles dark mode and changes button icon accordingly
-function toggleDarkMode() {
-    header.classList.toggle('dark__mode');
-    body.classList.toggle('dark__mode');
-    zipInput.classList.toggle('dark__mode')
-    feelingsInput.classList.toggle('dark__mode')
-    generateButton.classList.toggle('dark__mode');
-    resultSection.classList.toggle('dark__mode');
-
-    body.classList.contains('dark__mode') ? 
-    darkModeButton.innerHTML = `<span class='material-symbols-outlined icon'> light_mode </span>` :
-    darkModeButton.innerHTML = `<span class='material-symbols-outlined icon'> dark_mode </span>`
+// applies dark mode
+function enableDarkMode() {
+    localStorage.setItem('darkMode', 'enabled');
+    html.classList.add('dark__mode');
+    darkModeButton.innerHTML = `<span class='material-symbols-outlined icon'> light_mode </span>`;
 };
 
-// Events
+// removes dark mode
+function disableDarkMode() {
+    localStorage.setItem('darkMode', 'disabled');
+    html.classList.remove('dark__mode');
+    darkModeButton.innerHTML = `<span class='material-symbols-outlined icon'> dark_mode </span>`;
+};
+
+// sets page theme
+function toggleTheme() {
+    html.classList.contains('dark__mode') ? 
+    disableDarkMode() : 
+    enableDarkMode();
+};
+
+// applies transitions after page load to prevent light mode styling flashing before dark mode styling is loaded
+function applyTransitions() {
+    const trans = 'all 0.5s';
+    document.getElementById('header').style.transition = trans;
+    document.body.style.transition = trans;
+    zipInput.style.transition = trans;
+    feelingsInput.style.transition = trans;
+    generateButton.style.transition = trans;
+    document.getElementById('result').style.transition = trans;
+};
+
+/* Events */
+
+if(prefersDark === 'enabled') {
+    enableDarkMode();
+};
 
 generateButton.addEventListener('click', generate);
 
-darkModeButton.addEventListener('click', toggleDarkMode);
+darkModeButton.addEventListener('click', applyTransitions, {once: true});
+
+darkModeButton.addEventListener('click', toggleTheme);

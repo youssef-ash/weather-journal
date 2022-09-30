@@ -1,36 +1,56 @@
-:root {
-    --background-light: rgba(0, 0, 0, 0.5);
-    --header-background-light: rgba(0, 0, 0, 0.3);
-    --background-dark: rgba(0, 0, 0, 0.6);
-    --header-background-dark: rgba(0, 0, 0, 0.5);
+/* Global variables */
+html {
     --font: 'Roboto', sans-serif;
+
+    --background-url: url('../images/purple-sky.jpg');
+
+    --header-background: rgba(0, 0, 0, 0.3);
+
+    --background-color: rgba(0, 0, 0, 0.6);
+
+    --input-background: white;
+    --input-color: black;
+
+    --button-hover: rgba(0, 0, 0, 0.763);
 }
 
+html.dark__mode {
+    --background-url: url('../images/dark-sky.jpg');
+
+    --header-background: rgba(0, 0, 0, 0.5);
+
+    --input-background: black;
+    --input-color: white;
+
+    --button-hover: rgba(44, 42, 42, 0.763);
+}
+
+/* General */
 html {
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-    background-image: url('../images/purple-sky.jpg');
+    background-image: var(--background-url);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 100%;
+    min-height: 100%;
     margin: 0;
 }
 
-body.dark__mode {
-    background-image: url('../images/dark-sky.jpg');
+main {
+    padding: 15px;
 }
 
-header {
-    background-color: var(--header-background-light);
+/* Header */
+#header {
+    background-color: var(--header-background);
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
 }
 
-header.dark__mode {
-    background-color: var(--header-background-dark);
-}
-
-h1 {
+#header__title {
     font-family: var(--font);
     font-weight: 900;
     font-size: 1.6rem;
@@ -38,38 +58,55 @@ h1 {
     color: white;
     padding: 15px 10px;
     margin: 0;
+    transition: all 0.2s;
 }
 
-#dark__mode {
+#dark__mode__button {
     position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    top: 11px;
+    top: 10px;
     right: 35px;
     height: 45px;
     width: 45px;
     padding: 0;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: transparent;
     color: white;
     font-size: 2rem;
     border: none;
     border-radius: 100%;
+    transition: all 0.5s;
 }
 
-#dark__mode:hover {
+#dark__mode__button:hover {
     cursor: pointer;
     background-color: rgba(89, 86, 86, 0.407);
 }
-    
+
 .icon {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    transition: all 0.2s;
 }
 
-main {
-    padding: 15px;
+@media only screen and (max-width: 600px) {
+    #header__title {
+        font-size: 1.45rem;
+    }
+
+    #dark__mode__button {
+        height: 40px;
+        width: 40px;
+        top: 13px;
+        right: 20px;
+    }
+
+    .icon {
+        font-size: 1.35rem;
+    }
 }
 
+/* Zip input */
 #zip__holder {
     display: flex;
     justify-content: center;
@@ -78,17 +115,15 @@ main {
 }
 
 #zip__input {
+    background-color: var(--input-background);
+    color: var(--input-color);
     width: 200px;
     border-radius: 10px;
     padding: 7px 10px;
     border: none;
 }
 
-#zip__input.dark__mode {
-    background-color: black;
-    color: white;
-}
-
+/* Error Message */
 #error__holder {
     display: none;
     justify-content: center;
@@ -107,6 +142,7 @@ main {
     margin-bottom: 10px;
 }
 
+/* Feelings input */
 #feelings__holder {
     display: flex;
     justify-content: center;
@@ -115,6 +151,8 @@ main {
 }
 
 #feelings__input {
+    background-color: var(--input-background);
+    color: var(--input-color);
     font-family: var(--font);
     border-radius: 10px;
     padding: 15px;
@@ -123,11 +161,7 @@ main {
     resize: none;
 }
 
-#feelings__input.dark__mode {
-    background-color: black;
-    color: white;
-}
-
+/* Generate button */
 #button__holder {
     display: flex;
     justify-content: center;
@@ -138,28 +172,21 @@ main {
 #generate {
     font-family: var(--font);
     border: none;
-    background-color: var(--background-light);
+    background-color: var(--background-color);
     color: white;
     border-radius: 10px;
     padding: 10px 20px;
     font-size: 0.9rem;
     font-weight: 600;
-}
-
-#generate.dark__mode {
-    background-color: var(--background-dark);
+    transition: background-color 0.5s;
 }
 
 #generate:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.763);
+    background-color: var(--button-hover);
 }
 
-#generate.dark__mode:hover {
-    cursor: pointer;
-    background-color: rgba(44, 42, 42, 0.763);
-}
-
+/* Result section */
 #result__container {
     display: flex;
     justify-content: center;
@@ -167,7 +194,7 @@ main {
 }
 
 #result {
-    background-color: var(--background-light);
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     width: 450px;
@@ -178,10 +205,6 @@ main {
     border-radius: 10px;
     padding: 5px 100px;
     line-height: 30px;
-}
-
-#result.dark__mode {
-    background-color: var(--background-dark);
 }
 
 #result label {
