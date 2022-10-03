@@ -125,7 +125,7 @@ main {
 
 /* Error Message */
 #error__holder {
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -140,6 +140,10 @@ main {
     text-align: center;
     padding: 5px 25px;
     margin-bottom: 10px;
+}
+
+#error:empty {
+    display: none;
 }
 
 /* Feelings input */
@@ -186,6 +190,10 @@ main {
     background-color: var(--button-hover);
 }
 
+#generate:active {
+    transform: scale(0.97);
+}
+
 /* Result section */
 #result__container {
     display: flex;
@@ -203,7 +211,7 @@ main {
     text-align: center;
     color: white;
     border-radius: 10px;
-    padding: 5px 100px;
+    padding: 10px 100px;
     line-height: 30px;
 }
 
