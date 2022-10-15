@@ -36,7 +36,7 @@ async function getWeather(url = '') {
         }
     } catch(error) {
         setTimeout(() => {
-            errorSection.innerHTML = error;
+            errorSection.innerHTML = error.message.charAt(0).toUpperCase() + error.message.slice(1);
         }, 300);
     }
 };
@@ -129,7 +129,7 @@ function toggleTheme() {
 function applyTransitions() {
     const trans = 'all 0.5s';
     document.getElementById('header').style.transition = trans;
-    document.body.style.transition = trans;
+    document.documentElement.style.transition = trans;
     zipInput.style.transition = trans;
     feelingsInput.style.transition = trans;
     generateButton.style.transition = trans;
